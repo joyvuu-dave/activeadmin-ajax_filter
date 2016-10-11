@@ -103,11 +103,11 @@ $ ->
   setTimeout (->
     apply_filter_ajax_select()
     return
-  ), 300
+  ), 100
 
   # apply ajax filter on inputs inside has_many entries
   $("form.formtastic .has_many_add").click ->
     setTimeout (->
       apply_filter_ajax_select()
       return
-    ), 300
+    ), 100
