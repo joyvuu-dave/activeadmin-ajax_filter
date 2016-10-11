@@ -68,7 +68,7 @@ $ ->
 
             ajaxFields.forEach (field) ->
               q["#{field}_eq"] = relatedInput(field).val()
-              # clear cache because it wrong with changing values of ajaxFields
+              # clear cache because it is wrong with changing values of ajaxFields
               select.loadedSearches = {}
 
             for ransack, value of staticRansack
@@ -98,9 +98,16 @@ $ ->
               relatedInput(field).change ->
                 selectize.clearOptions()
 
+
   # apply ajax filter to all static inputs
-  apply_filter_ajax_select()
+  setTimeout (->
+    apply_filter_ajax_select()
+    return
+  ), 300
 
   # apply ajax filter on inputs inside has_many entries
   $("form.formtastic .has_many_add").click ->
-    setTimeout((-> apply_filter_ajax_select()), 0)
+    setTimeout (->
+      apply_filter_ajax_select()
+      return
+    ), 300
