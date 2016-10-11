@@ -1,10 +1,10 @@
 module ActiveAdmin
   module Inputs
     module AjaxCore
-      DEFAULT_LIMIT = 5
+      DEFAULT_LIMIT = 10
 
       def pluck_column
-        klass.reorder("#{method} asc").limit(collection_limit).uniq.pluck(method)
+        klass.reorder("#{method} asc").public_send(:distinct).limit(collection_limit).pluck(method)
       end
 
       def input_html_options
